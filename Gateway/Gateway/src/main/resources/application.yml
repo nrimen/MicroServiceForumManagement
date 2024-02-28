@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: GATEWAY
+  cloud:
+    discovery:
+      enabled: true
+    gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:4200"
+            allowedHeaders: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - DELETE
+              - PUT
+              - PATCH
+      routes:
+        - id: FEEDBACK
+          uri: lb://FEEDBACK
+          predicates:
+            - Path=/FeedBackManagement/feedback/**
+
+        - id: OFFER
+          uri: lb://OFFER
+          predicates:
+            - Path=/OfferManagement/offer/**
+
+        - id: STAND
+          uri: lb://STAND
+          predicates:
+            - Path=/StandManagement/stand/**
+server:
+  port: 7777
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
