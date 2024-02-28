@@ -5,7 +5,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -15,21 +14,20 @@ import java.util.Date;
 @Builder
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Request implements Serializable {
+public class Application implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Setter(AccessLevel.NONE)
-    long idRequest ;
-    String requestTitle ;
-    String requestContent;
-    String requestField;
 
-    @Temporal(TemporalType.DATE)
-    Date postingDate ;
+    long idApplication ;
 
-    String location ;
-    String cv ;
+    boolean discussion ;
+    boolean isAccepted ;
 
     @ManyToOne
-    User userRequest ;
+    Offer offerApplication;
+
+
+    @OneToOne(mappedBy="applicationInterview")
+    private Interview interviewApplication;
+
 }
