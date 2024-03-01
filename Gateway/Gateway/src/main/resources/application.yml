@@ -42,7 +42,7 @@ spring:
           uri: lb://BLOG
           predicates:
             - Path=/UserManagement/user/**
-            
+
 server:
   port: 7777
 eureka:
