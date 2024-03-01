@@ -31,6 +31,18 @@ spring:
           uri: lb://STAND
           predicates:
             - Path=/StandManagement/stand/**
+
+        - id: BLOG
+          uri: lb://BLOG
+          predicates:
+            - Path=/BlogManagement/blog/**
+
+
+        - id: USER
+          uri: lb://BLOG
+          predicates:
+            - Path=/UserManagement/user/**
+            
 server:
   port: 7777
 eureka:
