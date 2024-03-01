@@ -3,7 +3,7 @@ package tn.esprit.piDev.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import tn.esprit.piDev.entities.enumerations.Pack;
+import tn.esprit.piDev.entities.enumerations.InterviewType;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -16,26 +16,21 @@ import java.util.Date;
 @Builder
 @ToString
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Stand implements Serializable {
+public class Interview implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Setter(AccessLevel.NONE)
-    long idStand ;
-
-    @Temporal(TemporalType.DATE)
-    Date reservationDate ;
+    long idInterview ;
 
     @Enumerated(EnumType.STRING)
-    Pack pack ;
+    InterviewType interviewType ;
 
-    float price ;
-    String Gallery ;
-    boolean isReserved ;
-    boolean isFinished ;
-    boolean isPartner ;
-    String immatriculationStand ;
+    @Temporal(TemporalType.DATE)
+    Date interviewDate ;
 
+    String classRoom ;
+    String link ;
 
-
-
+    @OneToOne
+    private Application applicationInterview;
 }

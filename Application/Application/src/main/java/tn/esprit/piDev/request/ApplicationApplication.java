@@ -1,4 +1,4 @@
-package tn.esprit.piDev.stand;
+package tn.esprit.piDev.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @ComponentScan(basePackages = {"tn.esprit.piDev.repositories","tn.esprit.piDev.controllers","tn.esprit.piDev.services","tn.esprit.piDev.config"})
 @EnableJpaRepositories(basePackages = "tn.esprit.piDev.repositories")
 @EnableAspectJAutoProxy
-public class StandApplication {
+public class ApplicationApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(StandApplication.class, args);
